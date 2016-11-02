@@ -1,0 +1,46 @@
+<template name="submitIdea">
+    <!--
+    <style type="text/css">
+        body {
+            min-height: 2000px;
+            padding-top: 70px;
+        }
+    </style>
+    -->
+    <div class="page-header">
+        <h1>Submit your idea</h1>
+    </div>
+    <p class="lead">The idea could be as simple as how to make tea more delicious, or as complicate as how to build better transportation system. Sky is the limit. </p>
+    <p class="lead">It's OK to bring the idea from an existing business and add something on top.</p>
+    <p class="lead">Optionally, supply more information if you see the business potential from your idea.</p>
+    <br><br>
+    <form>
+        <h4>Your Idea</h4>
+        <hr>
+        <div class="form-group">
+            <label for="titleInput">Title</label>
+            <input type="text" class="form-control" id="titleInput" placeholder="Title" {{b "value: title"}} />
+        </div>
+        <div class="form-group">
+            <label for="contentInput">Content</label>
+            <textarea id="contentInput" class="wysiwyg" name="content" {{b "value: contents"}}></textarea>
+        </div>
+        <br>
+        <h4>Business Opportunity (optional)</h4>
+        <hr>
+        <div class="form-group">
+            <label for="revenueInput">How to make money? (business model)</label>
+            <textarea id="revenueInput" class="wysiwyg" name="revenue" {{b "value: revenue"}}></textarea>
+        </div>
+        <div class="form-group">
+            <label for="marketInput">Who's our customer? What's market size?</label>
+            <textarea id="marketInput" class="wysiwyg" name="market" {{b "value: market"}}></textarea>
+        </div>
+        <div class="form-group">
+            <label for="competencyInput">Do Thaicom have enough resource do this business? Do we have competency?</label>
+            <textarea id="competencyInput" class="wysiwyg" name="competency" {{b "value: competency"}}></textarea>
+        </div>
+        <button class="btn btn-primary" {{b "click: submitForm"}}>Submit</button>
+    </form>
+
+</template>
