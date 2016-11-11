@@ -6,3 +6,4 @@
 
 import '../../api/users/publications.js';
 import '../../api/ideas/publications.js';
+import '../../api/tags/publications.js';

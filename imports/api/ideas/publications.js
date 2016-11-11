@@ -8,6 +8,7 @@ Meteor.publish('allIdeas', function () {
     return Ideas.find({},{
         fields: {
             title: 1,
+            tags: 1,
             createdBy: 1,
             createdAt: 1,
         },

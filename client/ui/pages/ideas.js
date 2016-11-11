@@ -26,6 +26,16 @@ Template.ideas.viewmodel({
                     }
                 },
                 {
+                  key: 'tags',
+                  label: 'Tags',
+                  fn: function (value, object, key) {
+                      if(!value) {
+                          return '';
+                      }
+                      return value.join(',');
+                  }
+                },
+                {
                     key: 'createdBy',
                     label: 'Submitted by',
                     fn: function (value, object, key) {
@@ -47,7 +57,7 @@ Template.ideas.viewmodel({
                     sortOrder: 0,
                     sortDirection: 'descending',
                 }
-            ]
+            ],
         }
     }
 });

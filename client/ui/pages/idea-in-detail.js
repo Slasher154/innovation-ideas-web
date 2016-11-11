@@ -38,8 +38,13 @@ Template.ideaInDetail.onRendered(function() {
         if(self.sub.ready()) {
             let idea = Ideas.findOne({ _id: self.getListId() });
             let ideaOwner = Meteor.users.findOne({ _id: idea.createdBy }).fullName();
+            let labelHtml = '';
+            let labelTemplate = '<span class="label label-primary">tag</span>'
+            _.each(idea.tags, function(tag) {
+                labelHtml += labelTemplate.replace('tag', tag) + ' ';
+            });
             $('.credit').html('Submitted by ' + ideaOwner + ' -- ' + moment(idea.createdAt).fromNow());
-            $('.title').html(idea.title);
+            $('.title').html(idea.title + ' ' + labelHtml);
             $('.contents').html(idea.contents);
             $('.revenue').html(idea.market);
             $('.market').html(idea.market);

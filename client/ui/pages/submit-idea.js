@@ -3,8 +3,12 @@
  */
 
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Tags } from '../../../imports/api/tags/tags';
 
 Template.submitIdea.viewmodel({
+    onCreated() {
+        Meteor.subscribe('allTags');
+    },
     onRendered() {
         $('.wysiwyg').froalaEditor({
             height: 200,
@@ -15,8 +19,12 @@ Template.submitIdea.viewmodel({
                 'insertTable', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
             imageInsertButtons: ['imageByURL']
         });
-
+        $('.tag-selector').select2();
     },
+    tags() {
+        return _.pluck(Tags.find().fetch(), 'name');
+    },
+    selectedTag: '',
     contents: '',
     competency: '',
     market: '',
@@ -26,6 +34,7 @@ Template.submitIdea.viewmodel({
         event.preventDefault();
         let idea = {
             title: $('#titleInput').val(),
+            tags: $('.tag-selector').val(),
             contents: $('#contentInput').val(),
             revenue: $('#revenueInput').val(),
             market: $('#marketInput').val(),

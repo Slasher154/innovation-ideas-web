@@ -62,6 +62,13 @@ loggedIn.route('/idea/:ideaId', {
     },
 });
 
+loggedIn.route('/tags/add', {
+    name: 'addTags',
+    action() {
+        BlazeLayout.render('mainLayout', { content: 'addTags' });
+    },
+});
+
 // Logout Route => '/logout'
 loggedIn.route('/logout', {
     name: 'logout',
