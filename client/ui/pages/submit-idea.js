@@ -10,14 +10,10 @@ Template.submitIdea.viewmodel({
         Meteor.subscribe('allTags');
     },
     onRendered() {
-        $('.wysiwyg').froalaEditor({
-            height: 200,
-            toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript',
-                'superscript', 'fontFamily', 'fontSize', '|', 'color', 'inlineStyle',
-                'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent',
-                'indent', 'quote', 'insertHR', '-', 'insertLink', 'insertImage',
-                'insertTable', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
-            imageInsertButtons: ['imageByURL']
+        tinymce.init({
+            selector: 'textarea.wysiwyg',
+            skin_url: '/packages/teamon_tinymce/skins/lightgray',
+            menubar: false,
         });
         $('.tag-selector').select2();
     },
@@ -35,10 +31,10 @@ Template.submitIdea.viewmodel({
         let idea = {
             title: $('#titleInput').val(),
             tags: $('.tag-selector').val(),
-            contents: $('#contentInput').val(),
-            revenue: $('#revenueInput').val(),
-            market: $('#marketInput').val(),
-            competency: $('#competencyInput').val(),
+            contents: tinyMCE.get('contentInput').getContent(),
+            revenue: tinyMCE.get('revenueInput').getContent(),
+            market: tinyMCE.get('marketInput').getContent(),
+            competency: tinyMCE.get('competencyInput').getContent(),
         };
         Meteor.call('submit-idea', idea, function(error, result) {
             if(error) {

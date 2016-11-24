@@ -46,7 +46,7 @@ Template.ideaInDetail.onRendered(function() {
             $('.credit').html('Submitted by ' + ideaOwner + ' -- ' + moment(idea.createdAt).fromNow());
             $('.title').html(idea.title + ' ' + labelHtml);
             $('.contents').html(idea.contents);
-            $('.revenue').html(idea.market);
+            $('.revenue').html(idea.revenue);
             $('.market').html(idea.market);
             $('.competency').html(idea.competency);
         }
