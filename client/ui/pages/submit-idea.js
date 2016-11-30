@@ -14,6 +14,8 @@ Template.submitIdea.viewmodel({
             selector: 'textarea.wysiwyg',
             skin_url: '/packages/teamon_tinymce/skins/lightgray',
             menubar: false,
+            plugins: "link code table",
+            toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | table code link',
         });
         $('.tag-selector').select2();
     },
